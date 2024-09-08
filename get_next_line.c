@@ -5,62 +5,122 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 22:16:10 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 18:45:40 by kamakasu         ###   ########.fr       */
+/*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
+/*   Updated: 2024/09/08 22:41:57 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_line {
-	char *str;
-	size_t len;
-	size_t capacity;
-} t_line;
+#include "get_next_line.h"
 
-char ft_getc(int fd)
+char	ft_getc(int fd)
 {
-	static char *buff;
-	static int read_byte;
+	static t_fd fd_list[OPEN_MAX];
 	
-	if (read_byte <= 0)
-		read_byte = read(fd, buff, BUFFER_SIZE);
-	read_byte--;
-	return (*buff++);
+	if (fd_list[fd].read_byte == 0)
+	{
+		fd_list[fd].read_byte = read(fd, fd_list[fd].buff, BUFFER_SIZE);
+		if (fd_list[fd].read_byte < 0)
+			return (fd_list[fd].read_byte++,-42);
+		fd_list[fd].buff_ptr = fd_list[fd].buff;
+	}
+	fd_list[fd].read_byte--;
+	if (fd_list[fd].read_byte < 0)
+		return (fd_list[fd].read_byte++, EOF);
+	return (*fd_list[fd].buff_ptr++);
 }
 
-int ft_putc(t_line *line, char c)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
+	unsigned char		*d;
+	const unsigned char	*s = src;
+	int					i;
+
+	d = dst;
+	s = src;
+	if (dst == src)
+		return (dst);
+	if (d < s && d + n > s)
+	{
+		i = n;
+		while (i-- > 0)
+			d[i - 1] = s[i - 1];
+	}
+	else
+	{
+		i = n;
+		while (i-- > 0)
+			d[i] = s[i];
+	}
+	return (dst);
+}
+
+
+int	ft_putc(t_line *line, char c)
+{
+	char	*new_line;
+
 	if (line->capacity <= line->len)
 	{
 		line->capacity = line->len * 2;
-		char *new_line = malloc(line->capacity);
+		new_line = malloc(line->capacity);
 		if (!new_line)
-			return -1;
-		memcpy(new_line, line->str);
+			return (-1);
+		ft_memcpy(new_line, line->str, line->len);
 		free(line->str);
 		line->str = new_line;
 	}
 	line->str[line->len++] = c;
+	return (0);
 }
 
-
-
-char*	get_next_line(int fd);
+char	*get_next_line(int fd)
 {
-	char *result;
-	t_line line;
-	
+	t_line	line;
+	char	c;
+
+	if (fd < 0 || fd > OPEN_MAX)
+		return (NULL);
 	line.str = 0;
 	line.len = 0;
 	line.capacity = 0;
+   while(1)
+   {
+	   c = ft_getc(fd);
+	   if (c == EOF)
+		   break;
+	   if (c == -42)
+		   return (free(line.str), NULL);
+	   if (ft_putc(&line, c) == -1)
+		   return (free(line.str), NULL);
+	   if (c == '\n')
+		   break;
+   }
+   if (!line.len)
+	   return (NULL);
+   ft_putc(&line, '\0');
+   return (line.str);
+}
+/*
+#include <fcntl.h>
+int	main(void)
+{
+	int		fd;
+	int fd2;
+	char	*cat_ptr;
+	char *cat_ptr2;
+
+	fd = open("test.txt", O_RDONLY);
+	fd2 = open("test2.txt", O_RDONLY);
 	while (1)
 	{
-		char c = ft_getc(fd);
-		if (c == EOF)
-			break;
-		ft_putc(&line, c);
-		if (c == '\n')
+		cat_ptr = get_next_line(fd);
+		cat_ptr2 = get_next_line(fd2);
+		printf("%s", cat_ptr);
+		printf("%s", cat_ptr2);
+		if (!cat_ptr || !cat_ptr2)
 			break;
 	}
-	ft_putc(&line, '\0');
-	return (line->str);
+	close(fd);
+	return (0);
 }
+*/
