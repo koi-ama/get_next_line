@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 22:52:33 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/07 23:38:19 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/08 17:42:14 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+typedef struct s_line {
+	char	*str;
+	size_t len;
+	size_t capacity;
+} t_line
 
 char	ft_getc(int fd)
 {
@@ -31,6 +37,11 @@ char	ft_getc(int fd)
 	if (read_byte < 0)
 		return (EOF);
 	return (*buff_ptr++);
+}
+
+int	ft_putc(t_line *line, char c)
+{
+	if ()
 }
 
 int	main(void)
