@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 22:59:55 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 23:00:38 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/08 23:27:29 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	ft_getc(int fd)
 {
-	static t_fd	fd_list[OPEN_MAX];
+	static t_fd	fd_list[FOPEN_MAX];
 
 	if (fd_list[fd].read_byte == 0)
 	{
@@ -61,7 +61,7 @@ char	*get_next_line(int fd)
 	t_line	line;
 	char	c;
 
-	if (fd < 0 || fd > OPEN_MAX)
+	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	line.str = 0;
 	line.len = 0;

@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 22:56:15 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/08 23:30:49 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	ft_getc(int fd)
 {
-	static t_fd	fd_list[OPEN_MAX];
+	static t_fd	fd_list[FOPEN_MAX];
 
 	if (fd_list[fd].read_byte == 0)
 	{
@@ -61,7 +61,7 @@ char	*get_next_line(int fd)
 	t_line	line;
 	char	c;
 
-	if (fd < 0 || fd > OPEN_MAX)
+	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	line.str = 0;
 	line.len = 0;
@@ -93,7 +93,7 @@ int	main(void)
 	char	*cat_ptr;
 	char	*cat_ptr2;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("test1.txt", O_RDONLY);
 	fd2 = open("test2.txt", O_RDONLY);
 	while (1)
 	{
