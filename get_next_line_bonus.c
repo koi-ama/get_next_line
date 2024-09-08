@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 22:56:15 by kamakasu         ###   ########.fr       */
+/*   Created: 2024/09/08 22:59:55 by kamakasu          #+#    #+#             */
+/*   Updated: 2024/09/08 23:00:38 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	ft_getc(int fd)
 {

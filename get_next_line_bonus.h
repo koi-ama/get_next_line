@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 20:15:18 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 22:56:37 by kamakasu         ###   ########.fr       */
+/*   Created: 2024/09/08 22:59:22 by kamakasu          #+#    #+#             */
+/*   Updated: 2024/09/08 23:00:29 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
