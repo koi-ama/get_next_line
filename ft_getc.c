@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 22:52:33 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 17:42:14 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:24:49 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,19 @@ char	ft_getc(int fd)
 
 int	ft_putc(t_line *line, char c)
 {
-	if ()
+	char	*new_line;
+
+	if (line->capacity <= line->len)
+	{
+		line->capacity = line->len * 2;
+		new_line = malloc(line->capacity);
+		if (!new_line)
+			return (-1);
+		memcpy(new_line, line->str, line->len + 1);
+		free(line->str);
+		line->str = new_line;
+	}
+	line->str[line->len++] = c;
 }
 
 int	main(void)
@@ -59,7 +71,7 @@ int	main(void)
 		c = ft_getc(fd);
 		if (c == EOF)
 			break;
-		printf("%c", c);
+		//'printf("%c", c); これの代わりにft_putc
 	}
  	close(fd);
  return (0);
