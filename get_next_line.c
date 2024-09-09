@@ -6,13 +6,13 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 23:30:49 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:40:36 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	ft_getc(int fd)
+int	ft_getc(int fd)
 {
 	static t_fd	fd_list[FOPEN_MAX];
 
@@ -59,7 +59,7 @@ int	ft_putc(t_line *line, char c)
 char	*get_next_line(int fd)
 {
 	t_line	line;
-	char	c;
+	int		c;
 
 	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
@@ -73,7 +73,7 @@ char	*get_next_line(int fd)
 			break ;
 		if (c == -42)
 			return (free(line.str), NULL);
-		if (ft_putc(&line, c) == -1)
+		if (ft_putc(&line, (char)c) == -1)
 			return (free(line.str), NULL);
 		if (c == '\n')
 			break ;
@@ -106,5 +106,4 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
-*/
+}*/

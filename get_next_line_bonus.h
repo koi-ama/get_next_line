@@ -36,7 +36,7 @@ typedef struct s_line
 	size_t	capacity;
 }			t_line;
 
-char		ft_getc(int fd);
+int			ft_getc(int fd);
 void		*ft_memcpy(char *dst, const char *src, size_t n);
 int			ft_putc(t_line *line, char c);
 char		*get_next_line(int fd);
