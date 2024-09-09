@@ -6,7 +6,7 @@
 /*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 22:27:21 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/09 10:40:36 by kamakasu         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:42:38 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_putc(t_line *line, char c)
 	if (line->capacity <= line->len)
 	{
 		line->capacity = line->len * 2;
-		new_line = malloc(line->capacity);
+		new_line = malloc(line->capacity + 1);
 		if (!new_line)
 			return (-1);
 		ft_memcpy(new_line, line->str, line->len);
