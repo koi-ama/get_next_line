@@ -3,9 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: kamakasu <kamakasu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 22:19:57 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/08 22:20:00 by kamakasu         ###   ########.fr       */
+/*   Created: 2025/05/14 00:18:34 by kamakasu          #+#    #+#             */
+/*   Updated: 2025/05/14 00:19:21 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"

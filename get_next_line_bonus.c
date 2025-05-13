@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamakasu <kamakasu@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: kamakasu <kamakasu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 22:59:55 by kamakasu          #+#    #+#             */
-/*   Updated: 2024/09/09 21:42:09 by kamakasu         ###   ########.fr       */
+/*   Updated: 2025/05/14 00:20:09 by kamakasu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,3 @@ char	*get_next_line(int fd)
 	ft_putc(&line, '\0');
 	return (line.str);
 }
-/*
-#include <fcntl.h>
-
-int	main(void)
-{
-	int		fd;
-	int		fd2;
-	char	*cat_ptr;
-	char	*cat_ptr2;
-
-	fd = open("test.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
-	while (1)
-	{
-		cat_ptr = get_next_line(fd);
-		cat_ptr2 = get_next_line(fd2);
-		printf("%s", cat_ptr);
-		printf("%s", cat_ptr2);
-		if (!cat_ptr || !cat_ptr2)
-			break ;
-	}
-	close(fd);
-	return (0);
-}
-*/
